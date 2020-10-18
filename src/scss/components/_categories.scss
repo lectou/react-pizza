@@ -1,0 +1,74 @@
+@import 'variables';
+
+.categories {
+  margin: 20px 0;
+  .wrapper {
+    & > ul {
+      display: flex;
+      li {
+        background-color: #f9f9f9;
+        padding: 13px 30px;
+        border-radius: 30px;
+        margin-right: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.1s ease-in-out;
+        @include noselect();
+
+        &:hover {
+          background-color: darken(#f9f9f9, 2%);
+        }
+
+        &:active {
+          background-color: darken(#f9f9f9, 5%);
+        }
+
+        &.active {
+          background-color: #282828;
+          color: #fff;
+        }
+      }
+    }
+    .categories__button {
+      display: none;
+    }
+  }
+  @media (max-width: 1265px) {
+    width: 100%;
+    position: relative;
+    height: 50px;
+    .wrapper {
+      z-index: 10;
+      position: absolute;
+      overflow: hidden;
+      max-width: 400px;
+      width: 100%;
+      @media (max-width: 738px) {
+        max-width: 100%;
+      }
+      .categories__button {
+        width: 100px;
+        display: block;
+        font-weight: bold;
+        font-size: 1.6rem;
+        @media (max-width: 738px) {
+          margin: 0 auto;
+        }
+      }
+      ul {
+        padding: 20px 25px;
+        margin: 25px 15px;
+        background-color: #f9f9f9;
+        border-radius: 25px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+        flex-direction: column;
+        li {
+          text-align: center;
+          background-color: #f9f9f9;
+          padding: 13px 30px;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

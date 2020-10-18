@@ -1,0 +1,69 @@
+@import 'fonts';
+@import 'variables';
+@import 'libs/normalize';
+@import 'components/all';
+
+body {
+  @include background;
+  padding: 50px 0;
+  font-size: 1.6rem;
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
+}
+.app {
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 15px;
+  max-width: 1400px;
+  width: calc(100vw - 80px);
+  box-shadow: 0px 10px 40px 4px rgba(0, 0, 0, 0.57);
+  padding: 0;
+  @media (max-width: 768px) {
+    width: calc(100% - 30px);
+  }
+
+  .content {
+    margin: 30px auto;
+    width: $container-width;
+    &__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @media (max-width: 810px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      @media (max-width: 738px) {
+        justify-content: center;
+      }
+    }
+    &__title {
+      margin: 30px 0;
+      font-size: 4.2rem;
+      @media (max-width: 768px) {
+        font-size: 3.4rem;
+      }
+      @media (max-width: 738px) {
+        text-align: center;
+      }
+    }
+    &__items {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+      justify-items: center;
+      grid-gap: 2vw;
+      @media (max-width: 1380px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      @media (max-width: 1060px) {
+        grid-template-columns: 1fr 1fr;
+      }
+      @media (max-width: 738px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

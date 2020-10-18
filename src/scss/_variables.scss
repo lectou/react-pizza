@@ -1,0 +1,14 @@
+// $background: #ffdf8c;
+$black: #232323;
+$gray-line: #f6f6f6;
+$orange: #fe5f1e;
+$duration: 0.15s;
+$grey: #b6b6b6;
+$container-width: 90%;
+
+@mixin background {
+  background-color: #ffe4c4;
+  background-image: linear-gradient(90deg, rgba(#fa9185, 0.5) 50%, transparent 50%),
+    linear-gradient(rgba(#fa9185, 0.5) 50%, transparent 50%);
+  background-size: 135px 135px;
+}
