@@ -72,7 +72,7 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "json-server": "json-server --watch ./public/db.json --port 3001",
+    "json-server": "json-server --watch public/db.json --port=3001",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "server": "node server.js",
@@ -81,6 +81,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "http://localhost:3001",
   "browserslist": {
     "production": [
       ">0.2%",
