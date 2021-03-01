@@ -1,36 +1,36 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { BasketItem, Button } from '../components';
-import { clearBasket, deleteBasketItem, plusBasketItem, minusBasketItem } from '../redux/actions/basket';
+import { CartItem, Button } from '../components';
+import { clearCart, deleteCartItem, plusCartItem, minusCartItem } from '../redux/actions/cart';
 import emptyImage from '../assets/img/empty.png';
 
-const Basket = () => {
+const Cart = () => {
   const dispatch = useDispatch();
-  const { totalPrice, totalCount, items } = useSelector(({ basket }) => basket);
+  const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart);
 
   const addedPizzas = Object.keys(items).map((key) => {
     return items[key].items[0];
   });
 
-  const onClearBasket = () => {
+  const onClearCart = () => {
     if (window.confirm('Вы действительно хотите очистить корзину?')) {
-      dispatch(clearBasket());
+      dispatch(clearCart());
     }
   };
 
   const deleteItem = (id) => {
     if (window.confirm('Вы действительно хотите удалить?')) {
-      dispatch(deleteBasketItem(id));
+      dispatch(deleteCartItem(id));
     }
   };
 
   const onPlusItem = (id) => {
-    dispatch(plusBasketItem(id));
+    dispatch(plusCartItem(id));
   };
 
   const onMinusItem = (id) => {
-    dispatch(minusBasketItem(id));
+    dispatch(minusCartItem(id));
   };
 
   const onClickOrder = () => {
@@ -38,10 +38,10 @@ const Basket = () => {
   };
 
   return (
-    <div className="container container__basket">
+    <div className="container">
       {totalCount ? (
-        <div className="basket">
-          <div className="basket__top">
+        <div className="cart">
+          <div className="cart__top">
             <h2 className="content__title">
               <svg xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24" fill="black"
@@ -88,12 +88,12 @@ const Basket = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span onClick={onClearBasket}>Очистить корзину</span>
+              <span onClick={onClearCart}>Очистить корзину</span>
             </div>
           </div>
           <div className="content__item">
             {addedPizzas.map(el => (
-              <BasketItem
+              <CartItem
                 key={el.id}
                 name={el.name}
                 image={el.imageUrl}
@@ -108,13 +108,13 @@ const Basket = () => {
               />
             ))}
           </div>
-          <div className="basket__bottom">
-            <div className="basket__bottom_info">
+          <div className="cart__bottom">
+            <div className="cart__bottom_info">
               <span>Количество пиц: <b>{totalCount} шт.</b></span>
               <span>Сумма заказа: <b>{totalPrice} &#8372;</b></span>
             </div>
-            <div className="basket__bottom_button">
-              <div className="button button--basket">
+            <div className="cart__bottom_button">
+              <div className="button button--cart">
                 <svg
                   width="8"
                   height="14"
@@ -142,7 +142,9 @@ const Basket = () => {
       )
         :
         (
-          <div className="basket basket__empty">
+
+          <div className="cart cart__empty">
+
             <h2 className="content__title">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                 fill="black" width="26px" height="26px">
@@ -157,6 +159,7 @@ const Basket = () => {
               Для того, чтобы заказать пиццу, перейди на главную страницу.
             </p>
             <img src={emptyImage} alt="Empty" />
+
             <Link to="/" className="button button--black">
               <span>Вернуться назад</span>
             </Link>
@@ -167,4 +170,4 @@ const Basket = () => {
   )
 }
 
-export default Basket;
+export default Cart;

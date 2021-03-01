@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from './index';
 
-const BasketItem = ({ name, type, size, totalCount, totalPrice, id, image, onDelete, onMinus, onPlus }) => {
+const CartItem = ({ name, type, size, totalCount, totalPrice, id, image, onDelete, onMinus, onPlus }) => {
 
   const handleDeleteClick = () => {
     onDelete(id);
@@ -16,16 +16,16 @@ const BasketItem = ({ name, type, size, totalCount, totalPrice, id, image, onDel
   };
 
   return (
-    <div className="basketItem">
-      <div className="basketItem__img">
+    <div className="cartItem">
+      <div className="cartItem__img">
         <img src={image} alt="image" />
       </div>
-      <div className="basketItem__info">
+      <div className="cartItem__info">
         <h3>{name}</h3>
         <p>{type} тесто, {size} см.</p>
       </div>
-      <div className="basketItem__count">
-        <button onClick={handleMinusItem} className="button button--outline button--circle basketItem__count_minus">
+      <div className="cartItem__count">
+        <button onClick={handleMinusItem} className="button button--outline button--circle cartItem__count_minus">
           <svg
             width="10"
             height="10"
@@ -43,7 +43,7 @@ const BasketItem = ({ name, type, size, totalCount, totalPrice, id, image, onDel
           </svg>
         </button>
         <b>{totalCount}</b>
-        <button onClick={handlePlusItem} className="button button--outline button--circle basketItem__count_plus">
+        <button onClick={handlePlusItem} className="button button--outline button--circle cartItem__count_plus">
           <svg
             width="10"
             height="10"
@@ -61,11 +61,11 @@ const BasketItem = ({ name, type, size, totalCount, totalPrice, id, image, onDel
           </svg>
         </button>
       </div>
-      <div className="basketItem__price">
+      <div className="cartItem__price">
         <b>{totalPrice} &#8372;</b>
       </div>
-      <div className="basketItem__delete">
-        <Button onClick={handleDeleteClick} className="button--circle" outline>
+      <div className="cartItem__delete">
+        <Button className="cartItem__delete" onClick={handleDeleteClick} className="button--circle" outline>
           <svg
             width="10"
             height="10"
@@ -87,4 +87,4 @@ const BasketItem = ({ name, type, size, totalCount, totalPrice, id, image, onDel
   )
 }
 
-export default BasketItem;
+export default CartItem;

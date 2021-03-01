@@ -1,9 +1,9 @@
-import React, { useEffect, useCallback, useState } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { Categories, SortPopup, PizzaBlock, PizzaLoading } from '../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPizzas } from '../redux/actions/pizzas';
 import { setCategory, setSort } from '../redux/actions/filter';
-import { addPizzaToBasket } from '../redux/actions/basket';
+import { addPizzaToCart } from '../redux/actions/cart';
 
 const Home = () => {
 
@@ -11,7 +11,7 @@ const Home = () => {
   const items = useSelector(({ pizzas }) => pizzas.pizzas);
   const loader = useSelector(({ pizzas }) => pizzas.isLoaded);
   const { category, sort } = useSelector(({ filter }) => filter);
-  const BasketItems = useSelector(({ basket }) => basket.items);
+  const CartItems = useSelector(({ cart }) => cart.items);
 
   const categoryNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
   const sortIems = [
@@ -32,8 +32,8 @@ const Home = () => {
     dispatch(setSort(type));
   }, []);
 
-  const handleAddPizzaToBasket = (obj) => {
-    dispatch(addPizzaToBasket(obj));
+  const handleAddPizzaToCart = (obj) => {
+    dispatch(addPizzaToCart(obj));
   };
 
   return (
@@ -50,15 +50,15 @@ const Home = () => {
           onClickSortType={onSelectSortType}
         />
       </div>
-      <h1 className="content__title">Все пиццы</h1>
+      <h2 className="content__title content__title-margin">Все пиццы</h2>
       <div className="content__items">
         {
           loader
             ? items.map(el => (
               <PizzaBlock
                 key={el.id}
-                addedCount={BasketItems[el.id] && BasketItems[el.id].items.length}
-                onClickAddPizza={handleAddPizzaToBasket}
+                addedCount={CartItems[el.id] && CartItems[el.id].items.length}
+                onClickAddPizza={handleAddPizzaToCart}
                 {...el}
               />
             ))

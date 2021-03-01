@@ -1,7 +1,8 @@
 const initialState = {
   items: {},
   totalPrice: 0,
-  totalCount: 0
+  totalCount: 0,
+  isLoaded: false
 };
 
 // price for each object
@@ -10,9 +11,9 @@ const getPrice = (arr) => arr.reduce((sum, el) => el.price + sum, 0);
 const getTotalPrice = (obj) => Object.values(obj).reduce((sum, el) => sum + el.totalPrice, 0);
 const getTotalCount = (obj) => Object.values(obj).reduce((sum, el) => sum + el.items.length, 0);
 
-const basket = (state = initialState, action) => {
+const cart = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_PIZZA_BASKET': {
+    case 'ADD_PIZZA_CART': {
 
       //create new object or add object
       const currentPizzaItems = !state.items[action.payload.id]
@@ -38,7 +39,7 @@ const basket = (state = initialState, action) => {
         totalPrice,
       };
     }
-    case 'DELETE_BASKET_ITEM': {
+    case 'DELETE_CART_ITEM': {
       const newItems = {
         ...state.items,
       };
@@ -52,7 +53,7 @@ const basket = (state = initialState, action) => {
         totalCount: state.totalCount - currentTotalCount,
       };
     }
-    case 'PLUS_BASKET_ITEM': {
+    case 'PLUS_CART_ITEM': {
       const newObjItems = [
         ...state.items[action.payload].items,
         state.items[action.payload].items[0],
@@ -74,7 +75,7 @@ const basket = (state = initialState, action) => {
         totalPrice,
       };
     }
-    case 'MINUS_BASKET_ITEM': {
+    case 'MINUS_CART_ITEM': {
       const oldItems = state.items[action.payload].items;
       const newObjItems =
         oldItems.length > 1 ? state.items[action.payload].items.slice(1) : oldItems;
@@ -96,11 +97,11 @@ const basket = (state = initialState, action) => {
         totalPrice,
       };
     }
-    case 'CLEAR_BASKET':
+    case 'CLEAR_CART':
       return { totalPrice: 0, totalCount: 0, items: {} };
     default:
       return state;
   }
 }
 
-export default basket;
+export default cart;

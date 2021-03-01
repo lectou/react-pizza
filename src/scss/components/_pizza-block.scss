@@ -6,7 +6,8 @@
   margin-bottom: 65px;
 
   &__image {
-    width: 260px;
+    max-width: 260px;
+    width: 100%;
   }
   &__title {
     font-size: 20px;

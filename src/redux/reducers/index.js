@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import basket from './basket';
+import cart from './cart';
 import filter from './filter';
 import pizzas from './pizzas';
 
 const reducers = combineReducers({
-  basket,
+  cart,
   filter,
   pizzas
 });

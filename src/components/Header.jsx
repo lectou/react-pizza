@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Button from './Button';
 
 function Header() {
-  const { totalPrice, totalCount } = useSelector(({ basket }) => basket);
+  const { totalPrice, totalCount } = useSelector(({ cart }) => cart);
   return (
     <div className="header">
       <div className="container">
@@ -13,13 +13,13 @@ function Header() {
           <div className="header__logo">
             <img width="40" src={logo} alt="logo" />
             <div>
-              <h1>React Pizza</h1>
-              <p>самая вкусная пицца во вселенной</p>
+              <h1>Pizza</h1>
+              <p>самая вкусная пицца</p>
             </div>
           </div>
         </Link>
         <div className="header__cart">
-          <Link to="/basket">
+          <Link to="/cart">
             <Button className="button--info">
               <span>{totalPrice} &#8372;</span>
               <div className="button__delimiter"></div>

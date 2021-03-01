@@ -4,4 +4,4 @@ export { default as Categories } from './Categories';
 export { default as PizzaBlock } from './PizzaBlock';
 export { default as SortPopup } from './SortPopup';
 export { default as PizzaLoading } from './PizzaBlock/PizzaLoading';
-export { default as BasketItem } from './BasketItem';
+export { default as CartItem } from './CartItem';
